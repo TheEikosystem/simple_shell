@@ -55,10 +55,10 @@ int func_strcmp(char *s1, char *s2)
         ;
 
     if (s1[y] > s2[y])
-        return (1);
-    if (s1[y] < s2[y])
-        return (-1);
-    return (0);
+	return (1);
+	if (s1[y] < s2[y])
+	return (-1);
+	return (0);
 }
 
 /**
@@ -79,23 +79,23 @@ char *func_strchr(char *s, char c)
     return ('\0');
 }
 /**
- * func_strspn - function;that acquires the length of a prefix substring
+ * func_strspn - function that acquires
+ * the length of a prefix substring
  * @s: initial segment
  * @accept: accepted bytes
  * Return: accepted bytes number
  */
 int func_strspn(char *s, char *accept)
 {
-    int r, d, bool;
-
-    for (r = 0; *(s + r) != '\0'; r++)
-    {
-        bool = 1;
-        for (d = 0; *(accept + d) != '\0'; d++)
+	int r, d, bool;
+	
+	for (r = 0; *(s + r) != '\0'; r++)
+	{
+	bool = 1;
+	for (d = 0; *(accept + d) != '\0'; d++)
         {
             if (*(s + r) == *(accept + d))
-            {
-                bool = 0;
+	{	bool = 0;
                 break;
             }
         }

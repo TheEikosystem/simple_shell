@@ -20,7 +20,8 @@ void func_memcpy(void *newptr, const void *ptr, unsigned int size)
  * @ptr: pointer to the memory allocated previously.
  * @old_size: size, in bytes, of the allocated space of ptr.
  * @new_size: new size, in bytes, of the new memory block.
- * Return: NULL ptr if malloc fails, else return ptr without changes if new_size == old_size
+ * Return: NULL ptr if malloc fails,
+ * else return ptr without changes if new_size == old_size
  */
 void *func_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
@@ -51,11 +52,13 @@ void *func_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	return (newptr);
 }
 /**
- * func_reallocdp - function thatreallocates a memory block of a double pointer.
+ * func_reallocdp - function thatreallocates
+ * a memory block of a double pointer.
  * @ptr: double pointer to the memory allocated previously.
  * @old_size: size, in bytes, of the allocated space of ptr.
  * @new_size: new size, in bytes, of the new memory block.
- * Return: ptr without changes if new_size == old_size, else, return NULL if malloc fails
+ * Return: ptr without changes if new_size == old_size,
+ * else, return NULL if malloc fails
  */
 char **func_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 {
