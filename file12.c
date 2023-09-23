@@ -50,7 +50,8 @@ func_set_env("OLDPWD", cp_pwd, dtsh);
 	free(cp_pwd);
 }
 /**
- * func_cd_to - functon that changes pathway to a directory given by user
+ * func_cd_to - functon that changes pathway
+ * to a directory given by user
  * @dtsh: data
  * Return: no return
  */
@@ -67,7 +68,6 @@ void func_cd_to(project_shell *dtsh)
 		func_get_error(dtsh, 2);
 		return;
 	}
-
 	cp_pwd = func_strdup(pwd);
 	func_set_env("OLDPWD", cp_pwd, dtsh);
 
@@ -78,12 +78,11 @@ void func_cd_to(project_shell *dtsh)
 	free(cp_dir);
 
 	dtsh->status = 0;
-
 	chdir(d);
 }
 
 /**
- * func_cd_previous - changes to the previous directory
+ * func_cd_previous-changes to the previous directory
  * @dtsh: data relevant (environ)
  * Return: no return
  */

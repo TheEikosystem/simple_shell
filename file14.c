@@ -60,11 +60,10 @@ int func_e_s_p(char *input, int z, char lt)
 				return (z);
 		}
 	}
-
 	return (func_e_s_p(input + 1, z + 1, *input));
 }
 /**
- * func_first_char - finds index of the first char
+ * func_first_char -finds index of the first char
  * @input: input string
  * @z: index
  * Return: 1 if error, else 0
@@ -73,13 +72,11 @@ int func_first_char(char *input, int *z)
 {
 	for (*z = 0; input[*z]; *z += 1)
 	{
-		if (input[*z] == ' ' || input[*z] == '\t')
-			continue;
-
-		if (input[*z] == ';' || input[*z] == '|' || input[*z] == '&')
-			return (-1);
-
-		break;
+	if (input[*z] == ' ' || input[*z] == '\t')
+	continue;
+	if (input[*z] == ';' || input[*z] == '|' || input[*z] == '&')
+		return (-1);
+	break;
 	}
 
 	return (0);
