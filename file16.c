@@ -1,6 +1,7 @@
 #include "unixshell.h"
 /**
- * func_cmp_env_name - function that compares env variables names wit name passed
+ * func_cmp_env_name - function that compares
+ * env variables names wit name passed
  * @nenv: environment variable name
  * @name: name passed
  * Return: 0 if are not equal. Another value if they are.

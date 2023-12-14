@@ -1,6 +1,7 @@
 #include "unixshell.h"
 /**
- * func_is_cdir - function that checks for seperators ":" in the current working directory.
+ * func_is_cdir - function that checks for seperators
+ * ":" in the current working directory.
  * @path: pointer
  * @n: int pointer
  * Return: 1 for path else 0
@@ -114,7 +115,8 @@ int func_is_executable(project_shell *dtsh)
 	return (-1);
 }
 /**
- * func_check_error_cmd - function that verifies if user has permissions to accesss drectory.
+ * func_check_error_cmd - function that verifies
+ * if user has permissions to accesss drectory.
  * @d: destination path of  directory
  * @dtsh: data structure
  * Return: 1 if error, else 0

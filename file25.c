@@ -1,6 +1,7 @@
 #include "unixshell.h"
 /**
- * func_check_env - function;that checks if the typed variable is an env variable
+ * func_check_env - function;that checks if
+ * the typed variable is an env variable
  * @first: head of linked list
  * @in: input string input
  * @data: data structure

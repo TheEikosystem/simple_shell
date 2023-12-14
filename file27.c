@@ -32,7 +32,7 @@ char *func_swap_char(char *input, int bool)
 	    z++;
 	}
 	else
-    	{
+	{
 		z = 0;
 		while (input[z])
 		{
@@ -41,10 +41,11 @@ char *func_swap_char(char *input, int bool)
 			z++;
 		}
 	}
-	return input;
+	return(input)
 }
 /**
- * func_add_nodes - function that adds separators and command lines in the lists
+ * func_add_nodes - function that adds separators
+ * and command lines in the lists
  * @hhs: head of separator list
  * @hhl: head of command lines list
  * @input: input string input
@@ -73,7 +74,7 @@ void func_add_nodes(sep_list **hhs, line_list **hhl, char *input)
 	line = func_swap_char(line, 1);
 	func_add_line_node_end(hhl, line);
 	line = func_strtok(NULL, ";|&");
-    } while (line != NULL);
+	} while (line != NULL);
 }
 /**
  * func_go_link - function that goes to the link command line stored
@@ -83,39 +84,40 @@ void func_add_nodes(sep_list **hhs, line_list **hhl, char *input)
  */
 void func_go_link(sep_list **bb_a, line_list **bb_b, project_shell *dtst)
 {
-    int loop_sep;
-    sep_list *ls_s;
-    line_list *ls_l;
+	int loop_sep;
+	sep_list *ls_s;
+	line_list *ls_l;
 
-    loop_sep = 1;
-    ls_s = *bb_a;
-    ls_l = *bb_b;
+	loop_sep = 1;
+	ls_s = *bb_a;
+	ls_l = *bb_b;
 
-    while (ls_s != NULL && loop_sep)
-    {
+	while (ls_s != NULL && loop_sep)
+	{
 	if (dtst->status == 0)
 	{
-	    if (ls_s->separator == '&' || ls_s->separator == ';')
+		if (ls_s->separator == '&' || ls_s->separator == ';')
 		loop_sep = 0;
-	    if (ls_s->separator == '|')
+		if (ls_s->separator == '|')
 		ls_l = ls_l->link, ls_s = ls_s->link;
 	}
 	else
 	{
-	    if (ls_s->separator == '|' || ls_s->separator == ';')
+		if (ls_s->separator == '|' || ls_s->separator == ';')
 		loop_sep = 0;
-	    if (ls_s->separator == '&')
+		if (ls_s->separator == '&')
 		ls_l = ls_l->link, ls_s = ls_s->link;
 	}
-	if (ls_s != NULL && !loop_sep)
+		if (ls_s != NULL && !loop_sep)
 	    ls_s = ls_s->link;
-    }
+	}
 
-    *bb_a = ls_s;
-    *bb_b = ls_l;
+	*bb_a = ls_s;
+	 *bb_b = ls_l;
 }
 /**
- * func_split_commands - function that splits command lines according to the separators
+ * func_split_commands - function that splits
+ * command lines according to the separators
  * @dtst: data struct
  * @input: input strin input
  * Return: 0 to exit, 1 to continue
@@ -131,31 +133,31 @@ int func_split_commands(project_shell *dtst, char *input)
 
 	func_add_nodes(&hhs, &hhl, input);
 
-    bb_a = hhs;
-    bb_b = hhl;
+	bb_a = hhs;
+	bb_b = hhl;
 
-    while (bb_b != NULL)
-    {
+	while (bb_b != NULL)
+	{
 	dtst->input = bb_b->line;
 	dtst->args = func_split_line(dtst->input);
 	loop = func_exec_line(dtst);
 	free(dtst->args);
 
 	if (loop == 0)
-	    break;
+	break;
 
 	func_go_link(&bb_a, &bb_b, dtst);
 
 	if (bb_b != NULL)
-	    bb_b = bb_b->link;
-    }
+	bb_b = bb_b->link;
+	}
 
-    func_free_sep_list(&hhs);
-    func_free_line_list(&hhl);
+	func_free_sep_list(&hhs);
+	func_free_line_list(&hhl);
 
-    if (loop == 0)
-	return 0;
-    return 1;
+	if (loop == 0)
+	return(0)
+    return(1)
 }
 /**
  * func_split_line - function for the token the input string
@@ -164,37 +166,35 @@ int func_split_commands(project_shell *dtst, char *input)
  */
 char **func_split_line(char *input)
 {
-    size_t b;
-    size_t z;
-    char **tokens;
-    char *token;
+	size_t b;
+	size_t z;
+	char **tokens;
+	char *token;
+	
+	b = TOK_BUFSIZE;
+	tokens = malloc(sizeof(char *) * b);
 
-    b = TOK_BUFSIZE;
-    tokens = malloc(sizeof(char *) * b);
-    if (tokens == NULL)
-    {
+	if (tokens == NULL)
+	{
 	write(STDERR_FILENO, ": allocation error\n", 18);
 	exit(EXIT_FAILURE);
-    }
-
-    token = func_strtok(input, TOK_DELIM);
-    tokens[0] = token;
-
-    for (z = 1; token != NULL; z++)
-    {
-	if (z == b)
+	}
+	token = func_strtok(input, TOK_DELIM);
+	tokens[0] = token;
+	for (z = 1; token != NULL; z++)
+    	{
+		if (z == b)
 	{
 	    b += TOK_BUFSIZE;
-	    tokens = func_reallocdp(tokens, z, sizeof(char *) * b);
-	    if (tokens == NULL)
-	    {
+	tokens = func_reallocdp(tokens, z, sizeof(char *) * b);
+	if (tokens == NULL)
+		{
 		write(STDERR_FILENO, ": allocation error\n", 18);
 		exit(EXIT_FAILURE);
-	    }
+		}
 	}
 	token = func_strtok(NULL, TOK_DELIM);
 	tokens[z] = token;
-    }
-
-    return tokens;
+	}
+	return (tokens)
 }

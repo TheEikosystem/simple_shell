@@ -8,7 +8,6 @@ void func_cd_dot(project_shell *dtsh)
 {
 char pwd[PATH_MAX];
 char *d, *cp_pwd, *cp_strtok_pwd;
-
 /* getting the size of the pwd */
 getcwd(pwd, sizeof(pwd));
 cp_pwd = func_strdup(pwd);/* environ arhuments*/
@@ -25,8 +24,7 @@ func_set_env("OLDPWD", cp_pwd, dtsh);
 		free(cp_pwd);
 		return;
 	}
-	/* ths copies string */
-	cp_strtok_pwd = cp_pwd;
+	cp_strtok_pwd = cp_pwd;/* ths copies string */
 	func_rev_string(cp_strtok_pwd);
 	cp_strtok_pwd = func_strtok(cp_strtok_pwd, "/");
 	if (cp_strtok_pwd != NULL)
