@@ -41,7 +41,7 @@ char *func_swap_char(char *input, int bool)
 			z++;
 		}
 	}
-	return(input)
+	return (input);
 }
 /**
  * func_add_nodes - function that adds separators
@@ -108,8 +108,8 @@ void func_go_link(sep_list **bb_a, line_list **bb_b, project_shell *dtst)
 		if (ls_s->separator == '&')
 		ls_l = ls_l->link, ls_s = ls_s->link;
 	}
-		if (ls_s != NULL && !loop_sep)
-	    ls_s = ls_s->link;
+	if (ls_s != NULL && !loop_sep)
+		ls_s = ls_s->link;
 	}
 
 	*bb_a = ls_s;
@@ -156,8 +156,8 @@ int func_split_commands(project_shell *dtst, char *input)
 	func_free_line_list(&hhl);
 
 	if (loop == 0)
-	return(0)
-    return(1)
+	return (0);
+	return (1);
 }
 /**
  * func_split_line - function for the token the input string
@@ -170,7 +170,7 @@ char **func_split_line(char *input)
 	size_t z;
 	char **tokens;
 	char *token;
-	
+
 	b = TOK_BUFSIZE;
 	tokens = malloc(sizeof(char *) * b);
 
@@ -182,9 +182,9 @@ char **func_split_line(char *input)
 	token = func_strtok(input, TOK_DELIM);
 	tokens[0] = token;
 	for (z = 1; token != NULL; z++)
-    	{
-		if (z == b)
 	{
+	if (z == b)
+		{
 	    b += TOK_BUFSIZE;
 	tokens = func_reallocdp(tokens, z, sizeof(char *) * b);
 	if (tokens == NULL)
@@ -192,7 +192,7 @@ char **func_split_line(char *input)
 		write(STDERR_FILENO, ": allocation error\n", 18);
 		exit(EXIT_FAILURE);
 		}
-	}
+		}
 	token = func_strtok(NULL, TOK_DELIM);
 	tokens[z] = token;
 	}
