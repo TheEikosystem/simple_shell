@@ -182,9 +182,9 @@ char **func_split_line(char *input)
 	token = func_strtok(input, TOK_DELIM);
 	tokens[0] = token;
 	for (z = 1; token != NULL; z++)
-	{
-	if (z == b)
 		{
+	if (z == b)
+	{
 	    b += TOK_BUFSIZE;
 	tokens = func_reallocdp(tokens, z, sizeof(char *) * b);
 	if (tokens == NULL)
@@ -195,6 +195,6 @@ char **func_split_line(char *input)
 		}
 	token = func_strtok(NULL, TOK_DELIM);
 	tokens[z] = token;
-	}
-	return (tokens)
+		}
+	return (tokens);
 }
